@@ -164,8 +164,8 @@ class WindowContent extends Component {
         <Comment.Group key={"window-message-" + message.get('id')}>
           <Comment>
 
-            {messageAvatar}
-            {/* <Comment.Avatar src="https://iflychat.com/sites/default/files/styles/thumbnail/public/pictures/picture-13-1347368850.jpg?itok=lz_uGf7g" /> */}
+            {/*messageAvatar*/}
+             <Comment.Avatar src="/ega-avatar.png" /> 
             <Comment.Content>
               {/* <Popover frame={"ifc-chat-frame-window"} position={"top left"} trigger={<Comment.Author as='a'>{message.name}</Comment.Author>} content={<ProfileCard/>}/> */}
               {!messageClubbing.info && <Comment.Author as='a'>{message.getIn(['user', 'displayName']) || message.getIn(['user', 'displayName'])}</Comment.Author>}
@@ -214,7 +214,8 @@ class WindowContent extends Component {
   }
 
     return (
-      <Segment onScroll={this.checkLoadMore.bind(this)} className="window-content" style={{overflowY: "auto", height: "375px"}} ref={node => this.handleContextRef = node}>
+	 
+      <Segment onScroll={this.checkLoadMore.bind(this)} className="window-content" ref={node => this.handleContextRef = node}>
         {messages}
       </Segment>
     )

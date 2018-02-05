@@ -101,8 +101,8 @@ body a {
   cursor: pointer;
 }
 
-// Custom Changes
-
+// Custom Changes by ascent 
+body{overflow: hidden;}
 .ifc-chat-window-container {
     margin: 0;
     max-width: none;
@@ -194,9 +194,10 @@ body a {
 }
 
 .ifc-chat-window .compact.segment > div {
-    height: 78px;
+    /*height: 78px;*/
 }
 
 .ui.compact.segment .ten textarea:hover, .ui.compact.segment .ten textarea:focus {
     outline: none;
 }
+// end of Custom Changes by ascent 

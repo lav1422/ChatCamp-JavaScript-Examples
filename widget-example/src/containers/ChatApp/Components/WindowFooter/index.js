@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from 'state/groupChannels/actions'
-import { Segment, Grid, Icon, Progress } from 'semantic-ui-react'
+import { Segment, Grid, Icon, Progress,Image } from 'semantic-ui-react'
 import './style.css'
 import Emoji from '../Emoji'
 import UnicodeToImg from 'utility/UnicodeToImg'
@@ -133,8 +133,8 @@ class WindowFooter extends Component {
     <Segment compact={true}>
       {/* <textArea className="borderNone" placeholder='Type and Send Message..' name ='message' value={message} style={{ width: "100%"}} onChange={this.handleChange} onKeyDown={this.handleKeyPress} ref={node => this.textInputRef = node} /> */}
       {!!percent && <Progress percent={percent} attached="top" size="large" color="purple" />}
-      <Grid>
-        <Grid.Column width={2}>
+      <Grid className="chat-footer">
+        <Grid.Column width={1}>
 
           <Popover
             frame={this.props.id}
@@ -149,8 +149,21 @@ class WindowFooter extends Component {
           />
 
         </Grid.Column>
-
-        <Grid.Column width={(isFile && isAction)?9:(isFile?10:12)} style={{paddingLeft: "9px", fontSize: "13.5px"}}>
+		
+		{ /*isFile && */ } 
+		{ <Grid.Column width={1}>
+          <Icon name='add' size='large' onClick={() => {this.sendAttachmentClick()}}/>
+        </Grid.Column>}
+		{ /*isFile && */ }
+        { <Grid.Column width={1}>
+          <Icon name='image' size='large' onClick={() => {this.sendAttachmentClick()}}/>
+        </Grid.Column>}
+		
+		{<CannedResponse id={this.props.id} />}
+		
+		
+		{/* width = (isFile && isAction)?8:(isFile?9:11) */}
+        <Grid.Column width={11} style={{paddingLeft: "9px", fontSize: "13.5px"}}>
 
           <Textarea
             className="borderNone"
@@ -167,18 +180,19 @@ class WindowFooter extends Component {
           />
           <input ref="attachmentField" type="file" onChange={this.handleFileUpload} style={{visibility: "hidden"}}/>
         </Grid.Column>
-        {isFile && <CannedResponse id={this.props.id} />}
-        {isFile && <Grid.Column width={1}>
-          <Icon name='add' size='large' onClick={() => {this.sendAttachmentClick()}}/>
-        </Grid.Column>}
-        {isFile && <Grid.Column width={1}>
-          <Icon name='image' size='large' onClick={() => {this.sendAttachmentClick()}}/>
-        </Grid.Column>}
+		{/*isFile &&  */}
+        
+        
         {/* {isAction && isFile && <Grid.Column width={1}>
           <MessageAction id={this.props.id}/>
-        </Grid.Column>} */}
-        {!isFile && <Grid.Column width={1}>
-          <Icon color="green" name='arrow right' size='large' onClick={() => {this.sendMessageClick()}}/>
+        </Grid.Column>}   !isFile &&  */}
+        {<Grid.Column width={1}>
+		
+		
+		{/*<Icon color="green" name='arrow right' size='large' onClick={() => {this.sendMessageClick()}}/> */ }
+		  <Image src = "/send-icon.jpg" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>
+		  
+		  
         </Grid.Column>}
       </Grid>
     </Segment>
