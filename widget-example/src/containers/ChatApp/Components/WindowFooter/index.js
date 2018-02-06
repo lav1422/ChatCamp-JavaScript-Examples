@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ReactMic } from 'react-mic';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from 'state/groupChannels/actions'
@@ -20,6 +21,7 @@ class WindowFooter extends Component {
     isEmojiOpen: false,
     footerHeight: 23,
     isFile: true,
+    record: false,
     isAction: (process.env.REACT_APP_CHATCAMP_ACTION === "TRUE") || (Utility.getUrlQueryParams(window.location.href)['action'] && Utility.getUrlQueryParams(window.location.href)['action'][0] && Utility.getUrlQueryParams(window.location.href)['action'][0] === "true")
   }
   constructor(props,context){
@@ -116,6 +118,37 @@ class WindowFooter extends Component {
     this.textInputRef.focus()
   }
 
+  startRecording = () => {
+    this.setState({
+      record: true
+    });
+  }
+
+  stopRecording = () => {
+    this.setState({
+      record: false
+    });
+  }
+
+  onStop = (recordedBlob) =>{
+    console.log('recordedBlob is: ', recordedBlob);
+    // var fd = new FormData();
+    // fd.append('fname', 'test.wav');
+    // fd.append('data', recordedBlob);
+    var file = new File([recordedBlob.blob], "recording.mp3", {type: "audio/mp3", lastModified: Date.now()});
+    // let reader = new FileReader();
+    this.props.actions.attachmentMessage(this.props.id, file)
+    // reader.onloadend = () => {
+    //   // console.log("File Reader", reader)
+    //   this.setState({
+    //     attachment: file,
+    //     // imagePreviewUrl: reader.result
+    //   });
+    // }
+    //
+    // reader.readAsDataURL(file)
+  }
+
   componentDidMount() {
     // this.props.setInput(this.textInputRef);
     this.props.setFileRef(this.refs.attachmentField)
@@ -126,7 +159,8 @@ class WindowFooter extends Component {
   }
 
   render () {
-    const { open, message, isFile, isAction } = this.state
+    console.log("i ma here")
+    const { open, message, isFile, isAction, record } = this.state
     let {frame, groupChannels, id} = this.props
     let percent = groupChannels.getIn([id, 'attachmentProgress'], 0)
     return (
@@ -134,9 +168,9 @@ class WindowFooter extends Component {
       {/* <textArea className="borderNone" placeholder='Type and Send Message..' name ='message' value={message} style={{ width: "100%"}} onChange={this.handleChange} onKeyDown={this.handleKeyPress} ref={node => this.textInputRef = node} /> */}
       {!!percent && <Progress percent={percent} attached="top" size="large" color="purple" />}
       <Grid className="chat-footer">
-        
-		
-		{ /*isFile && */ } 
+
+
+		{ /*isFile && */ }
 		{ <Grid.Column width={1}>
           <Icon name='add' size='large' onClick={() => {this.sendAttachmentClick()}}/>
         </Grid.Column>}
@@ -144,12 +178,18 @@ class WindowFooter extends Component {
         { <Grid.Column width={1}>
           <Icon name='image' size='large' onClick={() => {this.sendAttachmentClick()}}/>
         </Grid.Column>}
-		
+
+    {!record && <Grid.Column width={1}>
+      <Icon name='microphone' size='large' onClick={() => {this.startRecording()}}/>
+    </Grid.Column>}
+    {record && <Grid.Column width={1}>
+      <Icon name='microphone slash' size='large' onClick={() => {this.stopRecording()}}/>
+
 		{<CannedResponse id={this.props.id} />}
-		
-		
+
+
 		{/* width = (isFile && isAction)?8:(isFile?9:11) */}
-        <Grid.Column width={11} style={{paddingLeft: "9px", fontSize: "13.5px"}}>
+        <Grid.Column width={10} style={{paddingLeft: "9px", fontSize: "13.5px"}}>
 
           <Textarea
             className="borderNone"
@@ -167,20 +207,26 @@ class WindowFooter extends Component {
           <input ref="attachmentField" type="file" onChange={this.handleFileUpload} style={{visibility: "hidden"}}/>
         </Grid.Column>
 		{/*isFile &&  */}
-        
-        
+
+
         {/* {isAction && isFile && <Grid.Column width={1}>
           <MessageAction id={this.props.id}/>
         </Grid.Column>}   !isFile &&  */}
         {<Grid.Column width={1}>
-		
-		
+
+
 		{/*<Icon color="green" name='arrow right' size='large' onClick={() => {this.sendMessageClick()}}/> */ }
 		  <Image src = "/send-icon.png" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>
-		  
-		  
+
+
         </Grid.Column>}
       </Grid>
+      <ReactMic
+          record={this.state.record}
+          className="hideMic"
+          onStop={this.onStop}
+          strokeColor="#000000"
+          backgroundColor="#FF4081" />
     </Segment>
 
     )
