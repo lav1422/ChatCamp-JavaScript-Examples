@@ -102,7 +102,7 @@ body a {
 }
 
 // Custom Changes by ascent 
-body{overflow: hidden;}
+body{overflow: hidden; background: none; min-width: auto;}
 .ifc-chat-window-container {
     margin: 0;
     max-width: none;
@@ -111,17 +111,20 @@ body{overflow: hidden;}
 }
 
 .cc-chat-window-header {
-    background: #eef0f3;
-    padding-left: 40px !important;
+    background: rgba(34, 34, 34, .8);
+    /*padding-left: 40px !important;*/
+	padding-left: 25px !important;
 }
 
 .cc-chat-window-header .ui.header, .cc-chat-window-header .ui.header .sub.header, .cc-chat-window-header i.icon, .cc-chat-window-header i.icon .sub.header {
-    color: #303841;
+    color: rgba(255, 255, 255, .8);
 }
 
 .ui.segment.window-content {
-    background-color: #eef0f3;
-    padding-left: 40px;
+    background: rgba(255, 255, 255, .2);
+    /*padding-left: 40px;*/
+	padding-left: 25px;
+	border: none;
 }
 
 .ifc-chat-window-container .ui.grid>.row> .middle{
@@ -170,10 +173,11 @@ body{overflow: hidden;}
     width: 68.25% !important;
 }
 
-.ui.compact.segment .ten
- textarea {
-    height: 25px !important;
-    font-size: 16px;
+.ui.compact.segment textarea {
+    height: 22px !important;
+    font-size: 15px;
+    background: none;
+    padding-top: 4px;
 }
 
 @media(max-width: 767px){
@@ -197,7 +201,43 @@ body{overflow: hidden;}
     /*height: 78px;*/
 }
 
-.ui.compact.segment .ten textarea:hover, .ui.compact.segment .ten textarea:focus {
+.ui.compact.segment textarea:hover, .ui.compact.segment textarea:focus {
     outline: none;
+}
+
+
+.ui.segment {
+    background: none;
+    border: none;
+}
+.ui.segment.window-content .ui.comments .comment .metadata > div {
+    color: #000;
+}
+.segments.ifc-chat-window{border: none !important;}
+.ui.segments:not(.horizontal)>.segment:first-child, .segments.ifc-chat-window{border-radius: 0 !important;}
+.ifc-chat-window > .segment:first-child {
+    overflow: hidden;
+}
+.ui.segments:not(.horizontal)>.segment:last-child{background: rgba(255, 255, 255, 0.5);}
+.chat-footer {
+    background: rgba(255, 255, 255, 0.5);
+    margin: 0 !important;
+}
+.ifc-chat-window .compact.segment i.icon:before {
+    color: #333;
+    font-size: 17px;
+}
+.chat-footer > div {
+    padding: 5px !important;
+}
+
+.chat-footer.ui.grid>.one:not(.row) {
+    width: 33px !important;
+}
+.chat-footer.ui.grid > .eleven:not(.row) {
+    width: calc(100% - 132px)!important;
+}
+.chat-footer .dropdown {
+    margin-top: 3px;
 }
 // end of Custom Changes by ascent 

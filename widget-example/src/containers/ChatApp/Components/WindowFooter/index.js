@@ -134,21 +134,7 @@ class WindowFooter extends Component {
       {/* <textArea className="borderNone" placeholder='Type and Send Message..' name ='message' value={message} style={{ width: "100%"}} onChange={this.handleChange} onKeyDown={this.handleKeyPress} ref={node => this.textInputRef = node} /> */}
       {!!percent && <Progress percent={percent} attached="top" size="large" color="purple" />}
       <Grid className="chat-footer">
-        <Grid.Column width={1}>
-
-          <Popover
-            frame={this.props.id}
-            isOpen={this.state.isEmojiOpen}
-            trigger={<Icon name='smile' size='large' />}
-            content={<Emoji
-                      className="backgroundNone"
-                      key="ifc-chat-window-panel"
-                      showEmojiPanel={true}
-                      clickMethod ={this.handleUpdateEmoji}
-                    />}
-          />
-
-        </Grid.Column>
+        
 		
 		{ /*isFile && */ } 
 		{ <Grid.Column width={1}>
@@ -190,7 +176,7 @@ class WindowFooter extends Component {
 		
 		
 		{/*<Icon color="green" name='arrow right' size='large' onClick={() => {this.sendMessageClick()}}/> */ }
-		  <Image src = "/send-icon.jpg" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>
+		  <Image src = "/send-icon.png" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>
 		  
 		  
         </Grid.Column>}
