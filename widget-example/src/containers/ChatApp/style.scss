@@ -174,10 +174,11 @@ body{overflow: hidden; background: none; min-width: auto;}
 }
 
 .ui.compact.segment textarea {
-    height: 22px !important;
+    /*height: 22px !important;*/
     font-size: 15px;
     background: none;
     padding-top: 4px;
+	max-height:38px;
 }
 
 @media(max-width: 767px){
@@ -227,6 +228,10 @@ body{overflow: hidden; background: none; min-width: auto;}
     color: #333;
     font-size: 17px;
 }
+.chat-footer {
+    display: table !important;
+    width: 100%;
+}
 .chat-footer > div {
     padding: 5px !important;
 }
@@ -234,10 +239,33 @@ body{overflow: hidden; background: none; min-width: auto;}
 .chat-footer.ui.grid>.one:not(.row) {
     width: 33px !important;
 }
-.chat-footer.ui.grid > .eleven:not(.row) {
-    width: calc(100% - 132px)!important;
+.chat-footer.ui.grid > .ten:not(.row) {
+    width: calc(100% - 165px)!important;
 }
 .chat-footer .dropdown {
     margin-top: 3px;
+}
+.chat-footer.ui.grid > div:not(.row){
+    vertical-align: middle;
+    display: table-cell;
+    height: 55px !important;
+}
+@media (max-width: 667px){
+    .chat-footer{
+    display: block !important;
+}
+.chat-footer.ui.grid > div:not(.row) {
+    display: inline-block;
+}
+.chat-footer.ui.grid > .ten:not(.row){
+    width: calc(100% - 38px) !important;
+}
+.ui.segment.window-content{
+    height: calc(100vh - 192px) !important;
+}
+}
+.participants-list .ui.list {
+    max-height: 210px;
+    overflow: auto;
 }
 // end of Custom Changes by ascent 

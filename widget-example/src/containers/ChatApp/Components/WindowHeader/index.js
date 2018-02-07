@@ -78,7 +78,7 @@ class WindowHeader extends Component {
                     trigger={triggerComponent}
                     hideOnScroll
                     position='bottom left'
-                    on='click'>
+                    on='click' className="participants-list">
                     <Popup.Header>Participants</Popup.Header>
                     <Popup.Content>
 

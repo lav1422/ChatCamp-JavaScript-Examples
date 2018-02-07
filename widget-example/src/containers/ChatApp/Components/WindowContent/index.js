@@ -168,7 +168,7 @@ class WindowContent extends Component {
           <Comment>
 
             {/*messageAvatar*/}
-             <Comment.Avatar src="/ega-avatar.png" /> 
+             <Comment.Avatar src="./ega-avatar.png" /> 
             <Comment.Content>
               {/* <Popover frame={"ifc-chat-frame-window"} position={"top left"} trigger={<Comment.Author as='a'>{message.name}</Comment.Author>} content={<ProfileCard/>}/> */}
               {!messageClubbing.info && <Comment.Author as='a'>{message.getIn(['user', 'displayName']) || message.getIn(['user', 'displayName'])}</Comment.Author>}

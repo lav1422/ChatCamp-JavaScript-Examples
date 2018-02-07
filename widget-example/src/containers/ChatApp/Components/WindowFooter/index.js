@@ -184,7 +184,7 @@ class WindowFooter extends Component {
     </Grid.Column>}
     {record && <Grid.Column width={1}>
       <Icon name='microphone slash' size='large' onClick={() => {this.stopRecording()}}/>
-
+	</Grid.Column>}
 		{<CannedResponse id={this.props.id} />}
 
 
@@ -216,7 +216,7 @@ class WindowFooter extends Component {
 
 
 		{/*<Icon color="green" name='arrow right' size='large' onClick={() => {this.sendMessageClick()}}/> */ }
-		  <Image src = "/send-icon.png" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>
+		  <Image src = "./send-icon.png" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>
 
 
         </Grid.Column>}
