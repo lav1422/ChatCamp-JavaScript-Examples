@@ -243,7 +243,7 @@ class WindowFooter extends Component {
 
 		{/*<Icon color="green" name='arrow right' size='large' onClick={() => {this.sendMessageClick()}}/> */ }
         <Popup
-          trigger={<Image src = "./send-icon.png" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>}/>}
+          trigger={<Image src = "./send-icon.png" className="SendImg" size='mini' onClick={() => {this.sendMessageClick()}}/>}
           content='Send Message'
           inverted
         />
