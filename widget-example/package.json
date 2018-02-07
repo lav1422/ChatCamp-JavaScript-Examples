@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap-sass": "^3.3.7",
-    "chatcamp": "^0.1.13",
+    "chatcamp": "^0.1.14",
     "cross-env": "^5.1.3",
     "emoji-mart": "^1.0.1",
     "flow-bin": "^0.49.1",
@@ -35,6 +35,7 @@
     "store2": "^2.5.1"
   },
   "devDependencies": {
+    "cross-env": "^5.1.3",
     "node-sass": "^4.5.3",
     "react-addons-perf": "^15.4.2",
     "redux-devtools-extension": "^2.13.2",
